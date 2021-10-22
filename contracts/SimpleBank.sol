@@ -7,7 +7,7 @@
 pragma solidity >=0.5.16 <0.9.0;
 
 contract SimpleBank {
-    mapping(address => uint256) private balances; // TODO create contract that inherit and test it cannot access
+    mapping(address => uint256) private balances;
     mapping(address => bool) public enrolled;
     address public owner = msg.sender;
 

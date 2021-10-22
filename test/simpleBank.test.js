@@ -25,14 +25,24 @@ contract("SimpleBank", function (accounts) {
     instance = await SimpleBank.new();
   });
 
-  // it("fallback should revert", async () => { // FIXME fix this
-  //   await catchFallback(
-  //     web3.eth.call({
-  //       from: contractOwner,
-  //       to: instance.address
-  //     })
-  //   );
-  // });
+  it("fallback should revert", async () => {
+    await catchFallback(
+      web3.eth.call({
+        from: contractOwner,
+        to: instance.address,
+        data: "0x0",
+      })
+    );
+  });
+
+  it("receive should revert", async () => {
+    await catchReceive(
+      web3.eth.call({
+        from: contractOwner,
+        to: instance.address,
+      })
+    );
+  });
 
   it("receive should revert", async () => {
     await catchReceive(
